@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja ogłoszenia</title>
+    <link rel="stylesheet" media="screen" th:href="@{/css/cyborg.css}"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+<div style="margin-left:10%; margin-right: 10%">
+    <h2 style="padding-top: 5%;"> Edycja ogłoszenia</h2>
+    <div class="col-md-12">
+        <div class="row col-md-7">
+            <form action="#" th:action="@{/editAdvert}" th:object="${advert}"
+                  method="post">
+                <div style="padding-top: 10px;"></div>
+                <hr>
+                <div class="form-group">
+                    <b class="control-label col-md-4">Samochód</b>
+                    <div class="col-md-8"  style="margin-top: 10px;">
+                        <span th:text="${advert.car.mark} + ' ' + ${advert.car.model} + ' '+ ${advert.car.production_year} + 'r.'"></span>
+                        <input type="hidden" th:field="*{car.id}">
+                        <input type="hidden" th:field="*{id}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <b class="control-label col-md-4">Nazwa</b>
+                    <div class="col-md-8"  style="margin-top: 10px;">
+                        <input style="color: black;" th:field="*{name}" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <b class="control-label col-md-4">Opis</b>
+                    <div class="col-md-8"  style="margin-top: 10px;">
+                        <input style="color: black;" th:field="*{description}" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <b class="control-label col-md-4">Cena</b>
+                    <div class="col-md-8"  style="margin-top: 10px;">
+                        <input style="color: black;" th:field="*{price}" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <b class="control-label col-md-4">Aktywne</b>
+                    <div class="col-md-8"  style="margin-top: 10px;">
+                        <input type="checkbox" style="color: black;" th:field="*{active}" />
+                    </div>
+                </div>
+                <div style="margin-top: 10px; margin-bottom: 10px;">
+                    <input type="submit" class="btn btn-primary" th:value="Zapisz">&nbsp;&nbsp;
+                    <input type="reset" class="btn btn-default" name="reset" th:value="Wyczyść"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

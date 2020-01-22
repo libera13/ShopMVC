@@ -1,0 +1,74 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły ogłoszenia</title>
+    <link rel="stylesheet" media="screen" th:href="@{/css/cyborg.css}"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+<div style="margin-left:10%; margin-right: 10%">
+    <h2 style="padding-top: 5%;" th:text="${advert.name}" ></h2>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="col-md-3" style="margin-top:15px; margin-bottom:15px">
+                <img th:src="@{'/uploads/' + ${advert.car.id} + '/' + ${advert.car.picture}}" th:width="600" th:height="400">
+            </div>
+        </div>
+        <div class="col-md-5">
+            <dl class="dl-horizontal" style="padding-top:15%">
+                <dt>
+                    <b class="control-label">Marka</b>
+                </dt>
+
+                <dd style="margin-bottom:10px" th:text="${advert.car.mark}">
+
+                </dd>
+                <dt>
+                    <b class="control-label">Model</b>
+                </dt>
+
+                <dd style="margin-bottom:10px" th:text="${advert.car.model}">
+                </dd>
+                <dt>
+                    <b class="control-label">Rok produkcji</b>
+                </dt>
+                <dd style="margin-bottom:10px" th:text="${advert.car.production_year} + ' r.'">
+                </dd>
+                <dt>
+                    <b class="control-label">Data zakupu</b>
+                </dt>
+                <dd style="margin-bottom:10px" th:text="${advert.car.purchase_date}">
+                </dd>
+                <dt>
+                    <b class="control-label">Właściciel: </b>
+                </dt>
+                <dd style="margin-bottom:10px" th:text="${advert.owner.first_name} + ' ' + ${advert.owner.last_name}">
+                </dd>
+                <dt>
+                    <b class="control-label">Telefon: </b>
+                </dt>
+                <dd style="margin-bottom:10px" th:text="${advert.owner.phone}">
+                </dd>
+                <dt>
+                    <b class="control-label">Email: </b>
+                </dt>
+                <dd style="margin-bottom:10px" th:text="${advert.owner.email}">
+                </dd>
+                <dt>
+                    <b class="control-label">Cena: </b>
+                </dt>
+                <dd style="margin-bottom:10px" th:text="${advert.price} + ' zł'">
+                </dd>
+                <dt>
+                    <b class="control-label">Szczegóły: </b>
+                </dt>
+                <dd style="margin-bottom:10px" th:text="${advert.description}">
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+</div>
+</body>
+</html>

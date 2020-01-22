@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
+    <link rel="stylesheet" media="screen" th:href="@{css/cyborg.css}"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+<div class="jumbotron">
+    <h1>ClassicGarage</h1>
+    <p>Kupuj, sprzedawaj, zarabiaj.</p>
+    <br>
+    <div th:switch="${logged.logged}">
+        <div th:case="false">
+            <a href="/register" class="btn btn-primary btn-lg">Zarejestruj</a>
+            <a href="/login" class="btn btn-primary btn-lg">Zaloguj</a>
+        </div>
+        <div th:case="true">
+            <a href="/advertList" class="btn btn-primary btn-lg">Ogłoszenia</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
