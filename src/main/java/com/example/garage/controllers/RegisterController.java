@@ -1,5 +1,6 @@
 package com.example.garage.controllers;
 
+import com.example.garage.model.Role;
 import com.example.garage.model.User;
 import com.example.garage.services.UserService;
 import com.example.garage.validators.UserRegisterValidator;
@@ -10,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.persistence.PersistenceException;
 import java.util.Locale;
 
 @Controller
@@ -26,6 +28,7 @@ public class RegisterController {
         model.addAttribute("user", u);
         return "register";
     }
+
 
     @PostMapping("/register")
     public String sendRegisterForm(User user, BindingResult result, Model model, Locale locale) {

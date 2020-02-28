@@ -14,14 +14,19 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @NotNull
     private String password;
 
+    @NotNull
     private String email;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private String last_name;
 
+    @NotNull
     private int phone;
 
     @NotNull
