@@ -22,7 +22,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="ad : ${adverts}" th:if="${ad.owner.username} == ${logged.loggedUser.username}">
+
+        <tr th:each="ad : ${adverts}" th:if="${ad.owner.email} == ${user.email}">
             <td><img th:src="@{'/uploads/' + ${ad.car.id} + '/' + ${ad.car.picture}}" th:width="150" th:height="100"> </td>
             <td><span th:text="${ad.name}"></span></td>
             <td><span th:text="${ad.description}"></span></td>

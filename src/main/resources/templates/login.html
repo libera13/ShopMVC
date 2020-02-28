@@ -11,22 +11,32 @@
     <h2 style="padding-top: 5%;"> Logowanie </h2>
     <div class="col-md-12">
         <div class="row col-md-5">
-            <form action="#" th:action="@{/loginRequest}" th:object="${login}"
-                  method="post">
+            <form name="f" th:action="@{/login}" method="post">
                 <div style="padding-top: 3px;"></div>
                 <hr>
-                <div class="form-group">
-                    <b class="control-label col-md-4">Login</b>
-                    <div class="col-md-8"  style="margin-top: 5px;">
-                        <input style="color: black;" th:field="*{username}" />
-                    </div>
+                <div th:if="${param.error}">
+                    <p th:text="#{error.logowanie}">Validation error</p>
                 </div>
                 <div class="form-group">
-                    <b class="control-label col-md-4">Hasło</b>
-                    <div class="col-md-8"  style="margin-top: 5px;">
-                        <input type="password" style="color: black;" th:field="*{password}" />
-                    </div>
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
                 </div>
+                <div class="form-group">
+                    <label for="password">Hasło</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                </div>
+<!--                <div class="form-group">-->
+<!--                    <b class="control-label col-md-4">Email</b>-->
+<!--                    <div class="col-md-8"  style="margin-top: 5px;">-->
+<!--                        <input style="color: black;" type="email" class="form-control" name="email" id="email" />-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <b class="control-label col-md-4">Hasło</b>-->
+<!--                    <div class="col-md-8"  style="margin-top: 5px;">-->
+<!--                        <input type="password" style="color: black;" name="password" />-->
+<!--                    </div>-->
+<!--                </div>-->
                 <input type="submit" class="btn btn-primary" th:value="Zaloguj" style="margin: 10px 40%;">
                 <p style="font-size: 10px; text-align: center;">Nie masz jeszcze konta? <a th:href="@{/register}">Utwórz nowe</a> </p>
             </form>

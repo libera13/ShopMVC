@@ -11,7 +11,7 @@
 <h2 style="padding-top: 5%;"> Rejestracja </h2>
 <div class="col-md-12">
     <div class="row col-md-7">
-        <form action="#" th:action="@{/save}" th:object="${user}"
+        <form action="#" th:action="@{/register}" th:object="${user}"
               method="post">
                 <div style="padding-top: 10px;"></div>
             <hr>
@@ -19,36 +19,48 @@
                     <b class="control-label col-md-4">Login</b>
                     <div class="col-md-8"  style="margin-top: 10px;">
                         <input style="color: black;" th:field="*{username}" />
+                        <p th:each="error: ${#fields.errors('username')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <b class="control-label col-md-4">Hasło</b>
                     <div class="col-md-8"  style="margin-top: 10px;">
                         <input type="password" style="color: black;" th:field="*{password}" />
+                        <p th:each="error: ${#fields.errors('password')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <b class="control-label col-md-4">Email</b>
                     <div class="col-md-8"  style="margin-top: 10px;">
                         <input style="color: black;" th:field="*{email}" />
+                        <p th:each="error: ${#fields.errors('email')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <b class="control-label col-md-4">Imię</b>
                     <div class="col-md-8"  style="margin-top: 10px;">
-                        <input style="color: black;" th:field="*{first_name}" />
+                        <input style="color: black;" th:field="*{name}" />
+                        <p th:each="error: ${#fields.errors('name')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <b class="control-label col-md-4">Nazwisko</b>
                     <div class="col-md-8"  style="margin-top: 10px;">
                         <input style="color: black;" th:field="*{last_name}" />
+                        <p th:each="error: ${#fields.errors('last_name')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom: 10px; margin-top: 10px;">
                     <b class="control-label col-md-4">Telefon</b>
                     <div class="col-md-8" style="margin-top: 10px; margin-bottom: 10px;">
                         <input style="color: black;" th:field="*{phone}" />
+                        <p th:each="error: ${#fields.errors('phone')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom: 10px; margin-top: 10px;">

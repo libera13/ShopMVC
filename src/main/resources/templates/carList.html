@@ -24,7 +24,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="car : ${cars}" th:if="${car.owner.username} == ${logged.loggedUser.username}">
+        <tr th:each="car : ${cars}" th:if="${car.owner.email} == ${user.email}">
             <td><img th:src="@{'/uploads/' + ${car.id} + '/' + ${car.picture}}" th:width="150" th:height="100"> </td>
             <td><span th:text="${car.mark}"></span></td>
             <td><span th:text="${car.model}"></span></td>
@@ -38,7 +38,7 @@
             </td>
         </tr>
         <tr>
-            <div th:if="${message}" th:text="${message}" class="alert"> </div>
+<!--            <div th:if="${message}" th:text="${message}" class="alert"> </div>-->
         </tr>
         </tbody>
     </table>

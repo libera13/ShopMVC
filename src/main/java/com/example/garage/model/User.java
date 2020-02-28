@@ -1,11 +1,14 @@
 package com.example.garage.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private long id;
 
     @Column(nullable = false, unique = true)
@@ -15,11 +18,21 @@ public class User {
 
     private String email;
 
-    private String first_name;
+    private String name;
 
     private String last_name;
 
     private int phone;
+
+    @NotNull
+    private int active;
+
+    @ManyToMany(cascade = CascadeType.ALL)  //??????????????????
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+    @Transient // Przy INSERTach do bazy danych hibernate pomija tą zmienną, uznaje ja za przezroczysta
+    private int nrRoli;
 
     public User() {
     }
@@ -56,12 +69,12 @@ public class User {
         this.email = email;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getName() {
+        return name;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLast_name() {
@@ -79,4 +92,14 @@ public class User {
     public void setPhone(int phone) {
         this.phone = phone;
     }
+
+    public int getActive() { return active; }
+
+    public void setActive(int active) { this.active = active; }
+
+    public Set<Role> getRoles() { return roles; }
+    public void setRoles(Set<Role> roles) { this.roles = roles; }
+
+    public int getNrRoli() { return nrRoli; }
+    public void setNrRoli(int nrRoli) { this.nrRoli = nrRoli; }
 }

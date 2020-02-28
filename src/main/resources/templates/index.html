@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Strona główna</title>
@@ -11,14 +11,12 @@
     <h1>ClassicGarage</h1>
     <p>Kupuj, sprzedawaj, zarabiaj.</p>
     <br>
-    <div th:switch="${logged.logged}">
-        <div th:case="false">
-            <a href="/register" class="btn btn-primary btn-lg">Zarejestruj</a>
-            <a href="/login" class="btn btn-primary btn-lg">Zaloguj</a>
-        </div>
-        <div th:case="true">
-            <a href="/advertList" class="btn btn-primary btn-lg">Ogłoszenia</a>
-        </div>
+    <div sec:authorize="isAnonymous()">
+        <a href="/register" class="btn btn-primary btn-lg">Zarejestruj</a>
+        <a href="/login" class="btn btn-primary btn-lg">Zaloguj</a>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <a href="/advertList" class="btn btn-primary btn-lg">Ogłoszenia</a>
     </div>
 </div>
 

@@ -1,0 +1,23 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Biblioteka xyz</title>
+    <meta name="description" content="Tylko najlepsze książki" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--Bootstrap-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../fontello/css/fontello.css" type="text/css" />
+    <link rel="stylesheet" href="/css/main.css"> <!-- css do menu-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/menu :: header">Header</div>
+    <h2 th:text="#{error.default}"/></h2>
+</div>
+</body>
+</html>

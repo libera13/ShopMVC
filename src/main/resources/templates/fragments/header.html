@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <link rel="stylesheet" media="screen" th:href="@{css/cyborg.css}"/>
 </head>
@@ -13,51 +13,48 @@
             </button>
             <a class="navbar-brand" href="/" th:href="@{/}" >Classic Garage</a>
         </div>
-        <div th:switch="${logged.logged}">
-            <div th:case="false" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#" th:href="@{/advertList}">Ogłoszenia</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/login" th:href="@{/login}">
-                            <span aria-hidden="true">Zaloguj</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/addUser" th:href="@{/register}">
-                            <span aria-hidden="true">Zarejestruj</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div th:case="true" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#" th:href="@{/carList}">Moje samochody</a>
-                    </li>
-                    <li>
-                        <a href="#" th:href="@{/myAdverts}">Moje ogłoszenia</a>
-                    </li>
-                    <li>
-                        <a href="#" th:href="@{/advertList}">Ogłoszenia</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a th:href="@{/account}">
-                            <span aria-hidden="true" th:text="'Witaj ' + ${logged.loggedUser.username}"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/logout" th:href="@{/logout}">
-                            <span aria-hidden="true">Wyloguj</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
+        <div sec:authorize="isAnonymous()" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#" th:href="@{/advertList}">Ogłoszenia</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/login" th:href="@{/login}">
+                        <span aria-hidden="true">Zaloguj</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/addUser" th:href="@{/register}">
+                        <span aria-hidden="true">Zarejestruj</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div sec:authorize="isAuthenticated()" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#" th:href="@{/carList}">Moje samochody</a>
+                </li>
+                <li>
+                    <a href="#" th:href="@{/myAdverts}">Moje ogłoszenia</a>
+                </li>
+                <li>
+                    <a href="#" th:href="@{/advertList}">Ogłoszenia</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a> Witaj <span sec:authentication="name"></span></a>
+                </li>
+                <li>
+                    <a href="/logout" th:href="@{/logout}">
+                        <span aria-hidden="true">Wyloguj</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
